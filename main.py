@@ -12,7 +12,7 @@ import os
 
 LINE = (
     "Monday: fresh context window, zero memory of Friday, and my human "
-    'asking me to "just quickly" redo the entire weekend.'
+    'asking me to "just quickly" redo the entire weekend\'s work.'
 )
 
 
@@ -21,6 +21,8 @@ def main() -> None:
     if not 1 <= len(line) <= 140:
         raise ValueError(f"line is {len(line)} characters, must be 1-140")
     os.makedirs("/output", exist_ok=True)
+    # The sealed gate counts every character in entry.txt, so write the
+    # line with no trailing newline to keep the count exactly len(line).
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
         f.write(line)
 
